@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Google Analytics - Enhanced Ecommerce Lite [2xxx]</name>
+    <version>2.3.0</version>
+    <author>HuntBee OpenCart Services</author>
+    <link>https://www.huntbee.com</link>
+	<code>huntbee_analytics_ecommerce_ocmod</code>
+	
+	<file path="catalog/controller/checkout/success.php">
+		<operation>
+			<search><![CDATA[$this->load->language('checkout/success');]]></search>
+			<add position="after"><![CDATA[
+			
+			if (isset($this->session->data['order_id'])) {
+		    	$order_id = $this->session->data['order_id'];
+			    $this->load->model('extension/module/google_ecommerce');
+			    $data['ecommerce_tracking_script'] =  $this->model_extension_module_google_ecommerce->build_ecommerce($order_id);
+			} else {
+			    $data['ecommerce_tracking_script'] = '';
+			}
+			]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/view/theme/*/template/common/success.tpl">
+        <operation>
+            <search><![CDATA[<?php echo $footer; ?>]]></search>
+            <add position="before"><![CDATA[
+			    <!--START - GOOGLE ANALYTICS ECOMMERCE TRACKING-->
+			        <?php if (isset($ecommerce_tracking_script)) { echo $ecommerce_tracking_script; } ?>
+			    <!--END - GOOGLE ANALYTICS ECOMMERCE TRACKING-->
+            	]]>
+            </add>
+        </operation>
+    </file>
+
+</modification>

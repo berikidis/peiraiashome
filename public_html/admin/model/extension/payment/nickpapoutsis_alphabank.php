@@ -1,0 +1,1 @@
+<?php class ModelExtensionPaymentNickpapoutsisAlphabank extends Model{public function logger($message){if($this->config->get('nickpapoutsis_alphabank_debug')==1){$log=new Log('nickpapoutsis_alphabank.log');$log->write($message);}}}

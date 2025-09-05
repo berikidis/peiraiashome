@@ -1,0 +1,10 @@
+.cookie-info {z-index:9999; padding: 5px;background:#00000099 ;position: fixed; bottom: 0; width: 100%; text-align: center; color:white; display: none;}
+.cookie-info span{ font-size: 15px; margin-left:20px;line-height: 30px}
+.vtabs a { text-transform: none!important; font-size: 15px;}
+.cookie-info .button {margin-left: 5px;text-transform: none}
+.cookie-info span a {color:white; font-size: 14px;text-decoration: underline;}
+.modal-body {display: block; }
+.vtabs-content { padding: 15px;  margin-bottom: 20px; z-index: 2; overflow: auto;}
+.modal-title { background: black; color:white;}
+.vtabs-content td ,.vtabs-content th {padding: 8px; line-height: 1.42857143; vertical-align: top; border-top: 1px solid #ddd;}
+.vtabs-content th {text-align: left;}

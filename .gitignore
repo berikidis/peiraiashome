@@ -1,0 +1,133 @@
+# OpenCart .gitignore (for project root outside public_html)
+
+# Configuration files (contain sensitive data)
+public_html/config.php
+public_html/admin/config.php
+
+# Cache directories
+public_html/system/cache/
+public_html/system/storage/cache/
+public_html/system/storage/session/
+public_html/journal-cache/
+!public_html/journal-cache/.htaccess
+
+# Log files
+public_html/system/storage/logs/
+*.log
+
+# Temporary files and uploads
+public_html/system/storage/upload/temp-*/
+public_html/system/storage/upload/*.tmp
+public_html/system/storage/download/
+public_html/vqmod/logs/
+public_html/vqmod/vqcache/
+
+# Image uploads and cache
+public_html/image/catalog/
+public_html/image/cache/
+
+# System storage modification cache
+public_html/system/storage/modification/
+!public_html/system/storage/modification/.htaccess
+
+# VQMod files
+public_html/vqmod/xml/
+!public_html/vqmod/xml/.htaccess
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS generated files
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Backup files
+db-dump/
+*.bak
+*.sql
+*.sqlite
+*.sql.gz
+backup/
+public_html/backup/
+
+# Error logs
+error_log
+error.log
+access.log
+
+# Node modules (if using build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Composer
+vendor/
+composer.lock
+
+# Build tools
+/build/
+/dist/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+
+# FTP sync files
+.ftpconfig
+.publish
+
+# Security scanner results
+security-checker-*
+
+# PHPUnit
+/phpunit.xml
+/.phpunit.result.cache
+
+# PHP CS Fixer
+.php_cs.cache
+
+# Behat
+behat.yml
+
+# Custom extensions backup
+!public_html/extensions/
+
+# Admin tools and maintenance files
+public_html/install/
+public_html/install.txt
+public_html/INSTALL.txt
+public_html/UPGRADE.txt
+public_html/LICENSE.txt
+
+# htaccess backups
+public_html/.htaccess.bak
+public_html/admin/.htaccess.bak
+
+# Temporary modification files
+*.ocmod.tmp
+*.vqmod.tmp
+
+# Journal theme specific (if using Journal theme)
+public_html/image/journal_cache/
+
+# Docker specific additions
+.docker/
+docker-data/
+!db-dump/.gitkeep

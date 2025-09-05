@@ -1,0 +1,7 @@
+#column-left {background: #19222E;}
+#menu > li > ul {background-color: #2a4569;}
+#menu li li a:hover { background-color: #3f73b9;}
+#menu > li > a:hover , #menu > li.active > a {background-color: #1f477b;}
+#menu > li > a,#menu > li.active > a,#menu li li a, #menu li.active li a {color: white;}
+.categories-list {display: table;cursor:pointer;}
+.but a {display: initial}

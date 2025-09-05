@@ -1,0 +1,27 @@
+http://localhost {
+    root * /var/www/html
+    php_fastcgi 127.0.0.1:9001
+    file_server
+
+    # OpenCart URL rewriting
+    @cleanPath not file
+    rewrite @cleanPath /index.php?_route_={path}
+
+    # Development-friendly settings
+    log {
+        output stdout
+        level DEBUG
+    }
+
+    # Disable caching for development
+    header {
+        Cache-Control "no-cache, no-store, must-revalidate"
+        Pragma "no-cache"
+        Expires "0"
+    }
+
+    # Enable detailed error pages
+    handle_errors {
+        respond "{http.error.status_code} {http.error.status_text}"
+    }
+}
