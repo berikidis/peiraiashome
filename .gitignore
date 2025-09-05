@@ -21,7 +21,6 @@ public_html/image/catalog/
 public_html/image/cache/
 
 # System storage modification cache
-public_html/system/storage/modification/
 !public_html/system/storage/modification/.htaccess
 
 # VQMod files
