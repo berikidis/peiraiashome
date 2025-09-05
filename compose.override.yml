@@ -1,8 +1,0 @@
-services:
-  php:
-    build:
-      context: .
-      target: dev
-    volumes:
-      # Additional development volumes if needed
-      - ./infra/caddy/Caddyfile.dev:/etc/caddy/Caddyfile
