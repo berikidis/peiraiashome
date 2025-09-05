@@ -1,9 +1,8 @@
 http://91.98.70.77 {
     root * /var/www/html
-    php_fastcgi localhost:9001
+    php_fastcgi php:9000
     file_server
 
-    # OpenCart URL rewriting
     @cleanPath not file
     rewrite @cleanPath /index.php?_route_={path}
 
@@ -15,92 +14,12 @@ http://91.98.70.77 {
         X-Content-Type-Options nosniff
         X-Frame-Options DENY
         X-XSS-Protection "1; mode=block"
-        Referrer-Policy "strict-origin-when-cross-origin"
-        X-Robots-Tag "index, follow"
-        Permissions-Policy "geolocation=(), microphone=(), camera=()"
-        # Remove server info
-        -Server
     }
 
-    # Cache static files for performance
+    # Cache static files
     @static {
         file
-        path *.ico *.css *.js *.gif *.jpg *.jpeg *.png *.svg *.woff *.woff2 *.ttf *.eot *.pdf *.gz *.webp
+        path *.ico *.css *.js *.gif *.jpg *.jpeg *.png *.svg *.woff *.pdf *.gz
     }
-    header @static {
-        Cache-Control "public, max-age=31536000, immutable"
-        Vary "Accept-Encoding"
-    }
-
-    # Cache HTML files for short period
-    @html {
-        file
-        path *.html
-    }
-    header @html Cache-Control "public, max-age=3600"
-
-    # Production logging (errors only)
-    log {
-        output file /var/log/caddy/access.log {
-            roll_size 100MB
-            roll_keep 5
-        }
-        level ERROR
-    }
-
-    # Compress responses
-    encode {
-        gzip 6
-        minimum_length 1024
-        match {
-            header Content-Type text/*
-            header Content-Type application/json*
-            header Content-Type application/javascript*
-            header Content-Type application/xml*
-            header Content-Type application/rss+xml*
-            header Content-Type application/atom+xml*
-            header Content-Type image/svg+xml*
-        }
-    }
-
-    # Rate limiting for security
-    rate_limit {
-        zone static_files {
-            key {remote_host}
-            events 100
-            window 1m
-        }
-    }
-
-    # Security: Block common attack paths
-    @blocked {
-        path /admin/config.php
-        path /.env
-        path /config.php
-        path /.git/*
-        path /vendor/*
-        path /system/storage/logs/*
-        path /vqmod/vqcache/*
-    }
-    respond @blocked 403
-
-    # Hide sensitive files
-    @sensitive {
-        path *.log
-        path *.sql
-        path *.bak
-        path *config*.php
-        path /system/storage/*
-    }
-    respond @sensitive 403
-
-    # Handle errors gracefully in production
-    handle_errors {
-        @4xx expression `{http.error.status_code} >= 400 && {http.error.status_code} < 500`
-        @5xx expression `{http.error.status_code} >= 500`
-
-        rewrite @4xx /error_pages/404.html
-        rewrite @5xx /error_pages/500.html
-        file_server
-    }
+    header @static Cache-Control max-age=31536000
 }

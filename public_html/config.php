@@ -1,11 +1,11 @@
 <?php
-// HTTP - Use environment variable (no hardcoded domain)
-define('HTTP_SERVER', getenv('OPENCART_URL') ?: 'http://localhost/');
+// HTTP
+define('HTTP_SERVER', 'http://localhost/');
 
-// HTTPS - Same as HTTP for your setup
-define('HTTPS_SERVER', getenv('OPENCART_URL') ?: 'http://localhost/');
+// HTTPS
+define('HTTPS_SERVER', 'http://localhost/');
 
-// DIR - These stay the same (internal paths)
+// DIR
 define('DIR_APPLICATION', __DIR__ . '/catalog/');
 define('DIR_SYSTEM', __DIR__ . '/system/');
 define('DIR_IMAGE', __DIR__ . '/image/');
@@ -18,26 +18,23 @@ define('DIR_LOGS', __DIR__ . '/system/storage/logs/');
 define('DIR_MODIFICATION', __DIR__ . '/system/storage/modification/');
 define('DIR_UPLOAD', __DIR__ . '/system/storage/upload/');
 
-// DB - Use Docker environment variables
+// DB
 define('DB_DRIVER', 'mysqli');
-define('DB_HOSTNAME', getenv('DB_HOST') ?: 'mariadb');
-define('DB_USERNAME', getenv('DB_USERNAME') ?: 'opencart');
-define('DB_PASSWORD', getenv('DB_PASSWORD') ?: 'password');
-define('DB_DATABASE', getenv('DB_DATABASE') ?: 'opencart');
+define('DB_HOSTNAME', 'localhost');
+define('DB_USERNAME', 'lefkaeid_db2');
+define('DB_PASSWORD', 'gt,ZnzvQxK+K');
+define('DB_DATABASE', 'lefkaeid_db2');
 define('DB_PORT', '3306');
 define('DB_PREFIX', '1c0p_');
 
-// CDN - Use environment variable (defaults to same as main URL)
-define('CDN_HTTPS_SERVER', getenv('OPENCART_CDN_URL') ?: getenv('OPENCART_URL') ?: 'http://localhost/');
+// CDN
+define('CDN_HTTPS_SERVER', 'https://cdn.peiraiashome.gr/');
 
-// REDIS CACHE - Use Docker Redis container
-define('CACHE_HOSTNAME', getenv('REDIS_HOST') ?: 'redis');
-define('CACHE_PORT', getenv('REDIS_PORT') ?: '6379');
-define('CACHE_PREFIX', 'peir_');  // Keep your existing prefix
-define('CACHE_PASSWORD', getenv('REDIS_PASSWORD') ?: '');
+// REDIS CACHE
+define('CACHE_HOSTNAME', '127.0.0.1');
+define('CACHE_PORT', '6379');
+define('CACHE_PREFIX', 'peir_');
+define('CACHE_PASSWORD', '');
 
-// Debugger - Use environment variable for easy toggle
-if (getenv('APP_DEBUG') === 'true') {
-    define('IS_DEBUG', true);
-}
-?>
+// Debugger
+// define('IS_DEBUG', true);

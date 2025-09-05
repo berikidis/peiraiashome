@@ -943,3 +943,4 @@ system/library/smk/extensions/category_seo_titles_generator.php
 system/library/smk/extensions/category_seo_titles_h1_generator.php
 system/library/smk/extensions/category_tags_generator.php
 system/library/smk/extensions/category_description_generator.php
+system/startup.php
