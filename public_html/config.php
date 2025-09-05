@@ -18,20 +18,20 @@ define('DIR_LOGS', __DIR__ . '/system/storage/logs/');
 define('DIR_MODIFICATION', __DIR__ . '/system/storage/modification/');
 define('DIR_UPLOAD', __DIR__ . '/system/storage/upload/');
 
-// DB
+// DB - Use Docker environment variables
 define('DB_DRIVER', 'mysqli');
-define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'lefkaeid_db2');
-define('DB_PASSWORD', 'gt,ZnzvQxK+K');
-define('DB_DATABASE', 'lefkaeid_db2');
+define('DB_HOSTNAME', $_ENV['DB_HOST'] ?? 'mariadb');
+define('DB_USERNAME', $_ENV['DB_USERNAME'] ?? 'opencart');
+define('DB_PASSWORD', $_ENV['DB_PASSWORD'] ?? '1234');
+define('DB_DATABASE', $_ENV['DB_DATABASE'] ?? 'opencart');
 define('DB_PORT', '3306');
 define('DB_PREFIX', '1c0p_');
 
 // CDN
 define('CDN_HTTPS_SERVER', 'https://cdn.peiraiashome.gr/');
 
-// REDIS CACHE
-define('CACHE_HOSTNAME', '127.0.0.1');
+// REDIS CACHE - Use Docker service name
+define('CACHE_HOSTNAME', 'redis');
 define('CACHE_PORT', '6379');
 define('CACHE_PREFIX', 'peir_');
 define('CACHE_PASSWORD', '');

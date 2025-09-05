@@ -32,11 +32,9 @@ services:
       - target: 80
         published: 80
         protocol: tcp
-
     volumes:
       - ./public_html:/var/www/html
       - ./infra/caddy/Caddyfile.dev:/etc/caddy/Caddyfile
-#      - ./infra/caddy/Caddyfile.prod:/etc/caddy/Caddyfile
     depends_on:
       - mariadb
       - redis
@@ -47,6 +45,7 @@ services:
       - DB_PASSWORD=${MYSQL_PASSWORD}
     extra_hosts:
       - "host.docker.internal:host-gateway"
+
 volumes:
   mariadb_data:
   redis_data:
